@@ -10,19 +10,21 @@ const PRODUCTS=[
 ];
 
 let cart=JSON.parse(localStorage.getItem("centralmarket-cart")||"[]");
+let activeCoupon=localStorage.getItem("centralmarket-coupon")||"";
 
 function money(v){return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
-function saveCart(){localStorage.setItem("centralmarket-cart",JSON.stringify(cart));updateCartCount();renderCart()}
+function saveCart(){localStorage.setItem("centralmarket-cart",JSON.stringify(cart));updateCartCount();renderCart();if(document.querySelector("#fullCart"))renderCartPage()}
 function updateCartCount(){const n=cart.reduce((s,i)=>s+i.qty,0);document.querySelectorAll("#cartCount").forEach(e=>e.textContent=n)}
 function productCard(p){
 return `<article class="product-card"><a class="product-link" href="produto.html?id=${p.id}"><div class="product-image"><img src="${p.image}" alt="${p.name}" loading="lazy"><span class="discount">-${p.discount}%</span></div><div class="product-info"><span class="product-cat">${p.category}</span><h3>${p.name}</h3><div class="stars">★★★★★</div><div class="price">${money(p.price)} <span class="old">${money(p.old)}</span></div></a><button class="add-btn" data-add="${p.id}">Adicionar ao carrinho</button></div></article>`}
 function renderProducts(list,selector="#productGrid"){const el=document.querySelector(selector);if(!el)return;el.innerHTML=list.map(productCard).join("")}
 function addToCart(id){const p=PRODUCTS.find(x=>x.id===id);if(!p)return;const item=cart.find(x=>x.id===id);if(item)item.qty++;else cart.push({id:p.id,name:p.name,price:p.price,qty:1});saveCart();toast("Produto adicionado ao carrinho")}
 function changeQty(id,delta){const item=cart.find(x=>x.id===id);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.id!==id);saveCart()}
+function removeFromCart(id){cart=cart.filter(i=>i.id!==id);saveCart()}
 function renderCart(){
 const mount=document.querySelector("#cartMount");if(!mount)return;
 const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
-mount.innerHTML=`<div class="cart-backdrop" id="cartBackdrop"></div><aside class="cart-drawer" id="cartDrawer"><div class="cart-head"><h2>Seu carrinho</h2><button class="close-cart" id="closeCart">×</button></div><div class="cart-items">${cart.length?cart.map(i=>`<div class="cart-item"><div><strong>${i.name}</strong><br><small>${money(i.price)} cada</small></div><div class="qty"><button data-minus="${i.id}">−</button><span>${i.qty}</span><button data-plus="${i.id}">+</button></div></div>`).join(""):`<div class="cart-empty">Seu carrinho está vazio.</div>`}</div><div class="cart-foot"><div class="cart-total"><span>Total</span><span>${money(total)}</span></div><a class="btn primary checkout" href="carrinho.html">Ver carrinho completo</a></div></aside><div class="toast" id="toast"></div>`;
+mount.innerHTML=`<div class="cart-backdrop" id="cartBackdrop"></div><aside class="cart-drawer" id="cartDrawer"><div class="cart-head"><h2>Seu carrinho</h2><button class="close-cart" id="closeCart" aria-label="Fechar carrinho">×</button></div><div class="cart-items">${cart.length?cart.map(i=>{const p=PRODUCTS.find(x=>x.id===i.id);return `<div class="cart-item"><img src="${p?.image||""}" alt="${i.name}"><div class="cart-item-main"><strong>${i.name}</strong><small>${money(i.price)} cada</small><div class="cart-item-actions"><div class="qty"><button data-minus="${i.id}" aria-label="Diminuir quantidade">−</button><span>${i.qty}</span><button data-plus="${i.id}" aria-label="Aumentar quantidade">+</button></div><button class="remove-btn" data-remove="${i.id}">Remover</button></div></div></div>`}).join(""):`<div class="cart-empty">Seu carrinho está vazio.</div>`}</div><div class="cart-foot"><div class="cart-total"><span>Total</span><span>${money(total)}</span></div><a class="btn primary checkout" href="carrinho.html">Ver carrinho completo</a></div></aside><div class="toast" id="toast"></div>`;
 bindCart();
 }
 function openCart(){document.querySelector("#cartDrawer")?.classList.add("open");document.querySelector("#cartBackdrop")?.classList.add("open")}
@@ -32,6 +34,7 @@ document.querySelector("#closeCart")?.addEventListener("click",closeCart);
 document.querySelector("#cartBackdrop")?.addEventListener("click",closeCart);
 document.querySelectorAll("[data-minus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.minus,-1)));
 document.querySelectorAll("[data-plus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.plus,1)));
+document.querySelectorAll("[data-remove]").forEach(b=>b.addEventListener("click",()=>removeFromCart(b.dataset.remove)));
 document.querySelector("#checkoutBtn")?.addEventListener("click",()=>toast("Checkout pronto para ser conectado ao pagamento."));
 }
 function toast(msg){let el=document.querySelector("#toast");if(!el)return;el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),1800)}
@@ -43,13 +46,19 @@ el.innerHTML=`<div class="detail-image"><img src="${p.image}" alt="${p.name}"></
 }
 function renderCartPage(){
 const el=document.querySelector("#fullCart");if(!el)return;
-const total=cart.reduce((s,i)=>s+i.price*i.qty,0);const subtotal=total;let discount=0;
-el.innerHTML=`<div class="full-cart-items">${cart.length?cart.map(i=>`<div class="full-cart-item"><img src="${PRODUCTS.find(p=>p.id===i.id)?.image||""}" alt=""><div class="full-cart-main"><div><span class="product-cat">${PRODUCTS.find(p=>p.id===i.id)?.category||""}</span><h3>${i.name}</h3><p>${money(i.price)} cada</p></div><div class="qty"><button data-minus="${i.id}">−</button><span>${i.qty}</span><button data-plus="${i.id}">+</button></div></div><strong>${money(i.price*i.qty)}</strong></div>`).join(""):`<div class="cart-empty">Seu carrinho está vazio.<br><a class="text-link" href="produtos.html">Continuar comprando →</a></div>`}</div>
-<div class="checkout-box"><h2>Resumo da compra</h2><div class="summary-line"><span>Subtotal</span><strong>${money(subtotal)}</strong></div><div class="coupon-row"><input id="couponInput" placeholder="Cupom de desconto"><button id="couponBtn" class="btn ghost">Aplicar</button></div><p id="couponMsg" class="coupon-msg"></p><div class="summary-line"><span>Desconto</span><strong id="discountValue">${money(discount)}</strong></div><div class="summary-total"><span>Total</span><strong id="grandTotal">${money(subtotal-discount)}</strong></div><button class="btn primary checkout" id="fullCheckout">Finalizar compra</button></div>`;
-el.querySelectorAll("[data-minus]").forEach(b=>b.addEventListener("click",()=>{changeQty(b.dataset.minus,-1);renderCartPage()}));
-el.querySelectorAll("[data-plus]").forEach(b=>b.addEventListener("click",()=>{changeQty(b.dataset.plus,1);renderCartPage()}));
+const subtotal=cart.reduce((s,i)=>s+i.price*i.qty,0);
+const couponValid=activeCoupon==="CENTRAL10";
+const discount=couponValid?subtotal*.10:0;
+const total=subtotal-discount;
+el.innerHTML=`<div class="full-cart-items">${cart.length?cart.map(i=>{const p=PRODUCTS.find(x=>x.id===i.id);return `<div class="full-cart-item"><img src="${p?.image||""}" alt="${i.name}"><div class="full-cart-main"><div><span class="product-cat">${p?.category||""}</span><h3>${i.name}</h3><p>${money(i.price)} cada</p></div><div class="qty"><button data-minus="${i.id}" aria-label="Diminuir quantidade">−</button><span>${i.qty}</span><button data-plus="${i.id}" aria-label="Aumentar quantidade">+</button></div></div><div class="full-cart-price"><strong>${money(i.price*i.qty)}</strong><button class="remove-btn" data-remove="${i.id}">Remover</button></div></div>`}).join(""):`<div class="cart-empty">Seu carrinho está vazio.<br><a class="text-link" href="produtos.html">Continuar comprando →</a></div>`}</div>
+<div class="checkout-box"><h2>Resumo da compra</h2><div class="summary-line"><span>Subtotal</span><strong>${money(subtotal)}</strong></div><div class="coupon-row"><input id="couponInput" value="${couponValid?activeCoupon:""}" placeholder="Cupom de desconto" autocomplete="off"><button id="couponBtn" class="btn ghost">Aplicar</button></div><p id="couponMsg" class="coupon-msg">${couponValid?"Cupom CENTRAL10 aplicado: 10% de desconto.":""}</p><div class="summary-line"><span>Desconto</span><strong id="discountValue">-${money(discount)}</strong></div><div class="summary-total"><span>Total</span><strong id="grandTotal">${money(total)}</strong></div><button class="btn primary checkout" id="fullCheckout" ${cart.length?"":"disabled"}>Finalizar compra</button></div>`;
+el.querySelectorAll("[data-minus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.minus,-1)));
+el.querySelectorAll("[data-plus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.plus,1)));
+el.querySelectorAll("[data-remove]").forEach(b=>b.addEventListener("click",()=>removeFromCart(b.dataset.remove)));
 document.querySelector("#couponBtn")?.addEventListener("click",()=>{
-const input=document.querySelector("#couponInput"),msg=document.querySelector("#couponMsg");if(input.value.trim().toUpperCase()==="CENTRAL10"){discount=subtotal*.10;document.querySelector("#discountValue").textContent=money(discount);document.querySelector("#grandTotal").textContent=money(subtotal-discount);msg.textContent="Cupom CENTRAL10 aplicado: 10% de desconto."}else msg.textContent="Cupom inválido. Tente CENTRAL10."
+const input=document.querySelector("#couponInput"),msg=document.querySelector("#couponMsg");
+if(input.value.trim().toUpperCase()==="CENTRAL10"){activeCoupon="CENTRAL10";localStorage.setItem("centralmarket-coupon",activeCoupon);msg.textContent="Cupom CENTRAL10 aplicado: 10% de desconto.";renderCartPage();}
+else{activeCoupon="";localStorage.removeItem("centralmarket-coupon");msg.textContent="Cupom inválido. Tente CENTRAL10.";}
 });
 document.querySelector("#fullCheckout")?.addEventListener("click",()=>toast("Checkout pronto para ser conectado ao pagamento."));
 }
