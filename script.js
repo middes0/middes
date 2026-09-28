@@ -1,24 +1,22 @@
 const PRODUCTS=[
-{id:"phone",name:"Smartphone Pro X",category:"Tecnologia",price:2999.90,old:3499.90,discount:14,image:"https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=1000&q=85",brand:"CentralTech",description:"Smartphone de alto desempenho para uso diário, produtividade, fotos e entretenimento.",specs:[["Tela","6,7” AMOLED"],["RAM","6 GB"],["Armazenamento","256 GB"],["Processador","Octa-core 2,8 GHz"],["Câmeras","50 MP + 12 MP"],["Bateria","5.000 mAh"],["Conectividade","5G / Wi-Fi 6"],["Sistema","Android"]]},
+{id:"phone",name:"Smartphone Pro X",category:"Tecnologia",price:2999.90,old:3499.90,discount:14,image:"https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=1000&q=85",brand:"CentralTech",description:"Smartphone de alto desempenho para uso diário, produtividade, fotos e entretenimento.",specs:[["Tela","6,7” AMOLED"],["RAM","6 GB"],["Armazenamento","256 GB"],["Processador","Octa-core 2,8 GHz"],["Câmeras","50 MP + 12 MP"],["Bateria","5.000 mAh"],["Conectividade","5G / Wi‑Fi 6"],["Sistema","Android"]]},
 {id:"headphones",name:"Headphone Wireless",category:"Áudio",price:399.90,old:499.90,discount:20,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=85",brand:"CentralAudio",description:"Headphone sem fio com foco em conforto, autonomia e áudio imersivo.",specs:[["Tipo","Over-ear"],["Conexão","Bluetooth 5.3"],["Autonomia","Até 35 horas"],["Microfone","Integrado"],["Cancelamento","Redução de ruído"],["Carga","USB-C"],["Peso","285 g"]]},
 {id:"watch",name:"Smartwatch Active",category:"Tecnologia",price:699.90,old:799.90,discount:12,image:"https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=1000&q=85",brand:"CentralTech",description:"Relógio inteligente com tela colorida e recursos para acompanhar sua rotina.",specs:[["Tela","1,8” AMOLED"],["Bateria","Até 10 dias"],["Resistência","5 ATM"],["Conectividade","Bluetooth"],["Sensores","Frequência e movimento"],["Compatibilidade","Android / iOS"]]},
 {id:"controller",name:"Controle Wireless",category:"Games",price:329.90,old:399.90,discount:18,image:"https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?auto=format&fit=crop&w=1000&q=85",brand:"CentralPlay",description:"Controle sem fio projetado para jogos com resposta rápida e pegada confortável.",specs:[["Conexão","Wireless 2.4 GHz"],["Compatibilidade","PC / Console"],["Bateria","Até 20 horas"],["Vibração","Dual vibration"],["Porta","USB-C"],["Peso","210 g"]]},
 {id:"speaker",name:"Caixa de Som Mini",category:"Áudio",price:249.90,old:299.90,discount:17,image:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=1000&q=85",brand:"CentralAudio",description:"Caixa compacta com som potente para ambientes internos e externos.",specs:[["Potência","20 W"],["Conexão","Bluetooth 5.2"],["Autonomia","Até 14 horas"],["Resistência","IPX5"],["Carga","USB-C"]]},
 {id:"keyboard",name:"Teclado Mecânico",category:"Games",price:459.90,old:549.90,discount:16,image:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=1000&q=85",brand:"CentralPlay",description:"Teclado mecânico compacto para jogos e produtividade.",specs:[["Layout","ABNT2"],["Switches","Mecânicos"],["Conexão","USB-C"],["Iluminação","RGB"],["Anti-ghosting","Sim"],["Estrutura","Alumínio"]]},
-{id:"lamp",name:"Luminária Smart",category:"Casa",price:189.90,old:239.90,discount:21,image:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1000&q=85",brand:"CentralHome",description:"Luminária inteligente para criar diferentes ambientes no seu espaço.",specs:[["Potência","12 W"],["Controle","App / toque"],["Conectividade","Wi-Fi"],["Temperatura","2700K–6500K"],["Compatibilidade","Assistentes de voz"]]},
-{id:"camera",name:"Câmera Compacta",category:"Tecnologia",price:1199.90,old:1399.90,discount:14,image:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1000&q=85",brand:"CentralTech",description:"Câmera compacta para quem quer registrar momentos com praticidade.",specs:[["Sensor","24 MP"],["Vídeo","4K"],["Lente","18–55 mm"],["Tela","3” articulada"],["Conectividade","Wi-Fi / Bluetooth"],["Armazenamento","SD"]]}
+{id:"lamp",name:"Luminária Smart",category:"Casa",price:189.90,old:239.90,discount:21,image:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1000&q=85",brand:"CentralHome",description:"Luminária inteligente para criar diferentes ambientes no seu espaço.",specs:[["Potência","12 W"],["Controle","App / toque"],["Conectividade","Wi‑Fi"],["Temperatura","2700K–6500K"],["Compatibilidade","Assistentes de voz"]]},
+{id:"camera",name:"Câmera Compacta",category:"Tecnologia",price:1199.90,old:1399.90,discount:14,image:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1000&q=85",brand:"CentralTech",description:"Câmera compacta para quem quer registrar momentos com praticidade.",specs:[["Sensor","24 MP"],["Vídeo","4K"],["Lente","18–55 mm"],["Tela","3” articulada"],["Conectividade","Wi‑Fi / Bluetooth"],["Armazenamento","SD"]]}
 ];
 
-const storedCart=JSON.parse(localStorage.getItem("centralmarket-cart")||"[]");
-const originalCartLength=Array.isArray(storedCart)?storedCart.length:0;
-let cart=Array.isArray(storedCart)?storedCart.filter(i=>{const qty=Number(i?.qty);const price=Number(i?.price);return i&&i.id&&Number.isFinite(price)&&price>=0&&Number.isFinite(qty)&&qty>0;}):[];
-if(cart.length!==originalCartLength)localStorage.setItem("centralmarket-cart",JSON.stringify(cart));
+let cart=JSON.parse(localStorage.getItem("centralmarket-cart")||"[]");
 let activeCoupon=localStorage.getItem("centralmarket-coupon")||"";
 
 function money(v){return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
 function saveCart(){localStorage.setItem("centralmarket-cart",JSON.stringify(cart));updateCartCount();renderCart();if(document.querySelector("#fullCart"))renderCartPage()}
 function updateCartCount(){const n=cart.reduce((s,i)=>s+i.qty,0);document.querySelectorAll("#cartCount").forEach(e=>e.textContent=n)}
-function productCard(p){return `<article class="product-card"><a class="product-link" href="produto.html?id=${p.id}"><div class="product-image"><img src="${p.image}" alt="${p.name}" loading="lazy"><span class="discount">-${p.discount}%</span></div><div class="product-info"><span class="product-cat">${p.category}</span><h3>${p.name}</h3><div class="stars">★★★★★</div><div class="price">${money(p.price)} <span class="old">${money(p.old)}</span></div></a><button class="add-btn" data-add="${p.id}">Adicionar ao carrinho</button></div></article>`}
+function productCard(p){
+return `<article class="product-card"><a class="product-link" href="produto.html?id=${p.id}"><div class="product-image"><img src="${p.image}" alt="${p.name}" loading="lazy"><span class="discount">-${p.discount}%</span></div><div class="product-info"><span class="product-cat">${p.category}</span><h3>${p.name}</h3><div class="stars">★★★★★</div><div class="price">${money(p.price)} <span class="old">${money(p.old)}</span></div></a><button class="add-btn" data-add="${p.id}">Adicionar ao carrinho</button></div></article>`}
 function renderProducts(list,selector="#productGrid"){const el=document.querySelector(selector);if(!el)return;el.innerHTML=list.map(productCard).join("")}
 function addToCart(id){const p=PRODUCTS.find(x=>x.id===id);if(!p)return;const item=cart.find(x=>x.id===id);if(item)item.qty++;else cart.push({id:p.id,name:p.name,price:p.price,qty:1});saveCart();toast("Produto adicionado ao carrinho")}
 function changeQty(id,delta){const item=cart.find(x=>x.id===id);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.id!==id);saveCart()}
@@ -37,7 +35,7 @@ document.querySelector("#cartBackdrop")?.addEventListener("click",closeCart);
 document.querySelectorAll("[data-minus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.minus,-1)));
 document.querySelectorAll("[data-plus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.plus,1)));
 document.querySelectorAll("[data-remove]").forEach(b=>b.addEventListener("click",()=>removeFromCart(b.dataset.remove)));
-document.querySelector("#checkoutBtn")?.addEventListener("click",()=>toast("Checkout pronto para ser conectado ao pagamento."));
+document.querySelector("#checkoutBtn")?.addEventListener("click",()=>{ if(cart.length) window.location.href="pagamento.html"; else toast("Seu carrinho está vazio."); });
 }
 function toast(msg){let el=document.querySelector("#toast");if(!el)return;el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),1800)}
 function renderDetail(){
@@ -53,31 +51,20 @@ const couponValid=activeCoupon==="CENTRAL10";
 const discount=couponValid?subtotal*.10:0;
 const total=subtotal-discount;
 el.innerHTML=`<div class="full-cart-items">${cart.length?cart.map(i=>{const p=PRODUCTS.find(x=>x.id===i.id);return `<div class="full-cart-item"><img src="${p?.image||""}" alt="${i.name}"><div class="full-cart-main"><div><span class="product-cat">${p?.category||""}</span><h3>${i.name}</h3><p>${money(i.price)} cada</p></div><div class="qty"><button data-minus="${i.id}" aria-label="Diminuir quantidade">−</button><span>${i.qty}</span><button data-plus="${i.id}" aria-label="Aumentar quantidade">+</button></div></div><div class="full-cart-price"><strong>${money(i.price*i.qty)}</strong><button class="remove-btn" data-remove="${i.id}">Remover</button></div></div>`}).join(""):`<div class="cart-empty">Seu carrinho está vazio.<br><a class="text-link" href="produtos.html">Continuar comprando →</a></div>`}</div>
-<div class="checkout-box"><h2>Resumo da compra</h2><div class="summary-line"><span>Subtotal</span><strong>${money(subtotal)}</strong></div><div class="coupon-row"><input id="couponInput" value="${couponValid?activeCoupon:""}" placeholder="Cupom de desconto" autocomplete="off"><button id="couponBtn" class="btn ghost">Aplicar</button>${couponValid?'<button id="removeCouponBtn" class="btn ghost" type="button">Remover cupom</button>':""}</div><p id="couponMsg" class="coupon-msg">${couponValid?"Cupom CENTRAL10 aplicado: 10% de desconto.":""}</p><div class="summary-line"><span>Desconto</span><strong id="discountValue">-${money(discount)}</strong></div><div class="summary-total"><span>Total</span><strong id="grandTotal">${money(total)}</strong></div><button class="btn primary checkout" id="fullCheckout" ${cart.length?"":"disabled"}>Finalizar compra</button></div>`;
+<div class="checkout-box"><h2>Resumo da compra</h2><div class="summary-line"><span>Subtotal</span><strong>${money(subtotal)}</strong></div><div class="coupon-row"><input id="couponInput" value="${couponValid?activeCoupon:""}" placeholder="Cupom de desconto" autocomplete="off"><button id="couponBtn" class="btn ghost">Aplicar</button></div><p id="couponMsg" class="coupon-msg">${couponValid?"Cupom CENTRAL10 aplicado: 10% de desconto.":""}</p><div class="summary-line"><span>Desconto</span><strong id="discountValue">-${money(discount)}</strong></div><div class="summary-total"><span>Total</span><strong id="grandTotal">${money(total)}</strong></div><button class="btn primary checkout" id="fullCheckout" ${cart.length?"":"disabled"}>Finalizar compra</button></div>`;
 el.querySelectorAll("[data-minus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.minus,-1)));
 el.querySelectorAll("[data-plus]").forEach(b=>b.addEventListener("click",()=>changeQty(b.dataset.plus,1)));
 el.querySelectorAll("[data-remove]").forEach(b=>b.addEventListener("click",()=>removeFromCart(b.dataset.remove)));
-document.querySelector("#removeCouponBtn")?.addEventListener("click",()=>{activeCoupon="";localStorage.removeItem("centralmarket-coupon");renderCartPage();});
 document.querySelector("#couponBtn")?.addEventListener("click",()=>{
 const input=document.querySelector("#couponInput"),msg=document.querySelector("#couponMsg");
 if(input.value.trim().toUpperCase()==="CENTRAL10"){activeCoupon="CENTRAL10";localStorage.setItem("centralmarket-coupon",activeCoupon);msg.textContent="Cupom CENTRAL10 aplicado: 10% de desconto.";renderCartPage();}
 else{activeCoupon="";localStorage.removeItem("centralmarket-coupon");msg.textContent="Cupom inválido. Tente CENTRAL10.";}
 });
-document.querySelector("#fullCheckout")?.addEventListener("click",()=>toast("Checkout pronto para ser conectado ao pagamento."));
+document.querySelector("#fullCheckout")?.addEventListener("click",()=>{ if(cart.length) window.location.href="pagamento.html"; else toast("Seu carrinho está vazio."); });
 }
 function setup(){
 document.addEventListener("click",e=>{const b=e.target.closest("[data-add]");if(b)addToCart(b.dataset.add)});
-const cartButtons=document.querySelectorAll("#cartBtn");
-cartButtons.forEach(b=>b.addEventListener("click",()=>{openCart()}));
-if(!document.querySelector("#directCartLink")){
-const link=document.createElement("a");
-link.id="directCartLink";
-link.href="carrinho.html";
-link.textContent="🛒 Carrinho";
-link.setAttribute("aria-label","Abrir carrinho");
-link.style.cssText="position:fixed;right:18px;bottom:18px;z-index:9999;padding:12px 18px;border-radius:999px;background:#f5c542;color:#111;text-decoration:none;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.35);";
-document.body.appendChild(link);
-}
+document.querySelectorAll("#cartBtn").forEach(b=>b.addEventListener("click",()=>{openCart()}));
 updateCartCount();renderCart();
 
 const featured=document.querySelector("#featuredProducts");if(featured)renderProducts(PRODUCTS.slice(0,4),"#featuredProducts");
