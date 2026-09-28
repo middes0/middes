@@ -78,3 +78,5 @@ document.querySelector("#productSearch")?.addEventListener("input",apply);filter
 document.querySelector("#contactForm")?.addEventListener("submit",e=>{e.preventDefault();document.querySelector("#contactStatus").textContent="Mensagem preparada. Conecte este formulário a um serviço de envio para receber as mensagens.";e.target.reset()});
 }
 renderDetail();renderCartPage();document.addEventListener("DOMContentLoaded",setup);
+// Expose the catalog to CentralAI without changing the existing store logic.
+window.CENTRALMARKET_CATALOG = PRODUCTS;
