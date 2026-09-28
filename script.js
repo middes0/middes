@@ -9,7 +9,28 @@ const PRODUCTS=[
 {id:"camera",name:"Câmera Compacta",category:"Tecnologia",price:1199.90,old:1399.90,discount:14,image:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1000&q=85",brand:"CentralTech",description:"Câmera compacta para quem quer registrar momentos com praticidade.",specs:[["Sensor","24 MP"],["Vídeo","4K"],["Lente","18–55 mm"],["Tela","3” articulada"],["Conectividade","Wi‑Fi / Bluetooth"],["Armazenamento","SD"]]}
 ];
 
-let cart=JSON.parse(localStorage.getItem("centralmarket-cart")||"[]");
+const storedCart=JSON.parse(localStorage.getItem("centralmarket-cart")||"[]");
+
+const originalCartLength=Array.isArray(storedCart)?storedCart.length:0;
+
+let cart=Array.isArray(storedCart)
+  ? storedCart.filter(i=>{
+      const qty=Number(i?.qty);
+      const price=Number(i?.price);
+
+      return i &&
+        i.id &&
+        Number.isFinite(price) &&
+        price>=0 &&
+        Number.isFinite(qty) &&
+        qty>0;
+    })
+  : [];
+
+if(cart.length!==originalCartLength){
+  localStorage.setItem("centralmarket-cart",JSON.stringify(cart));
+}
+
 let activeCoupon=localStorage.getItem("centralmarket-coupon")||"";
 
 function money(v){return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
